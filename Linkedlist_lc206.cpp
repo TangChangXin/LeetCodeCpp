@@ -26,4 +26,26 @@ public:
         head->next = nullptr;
         return x新头节点;
     }
+
+    //第四次做
+    ListNode* d迭代法(ListNode *head) {
+        if (head == nullptr || head->next == nullptr) return head;
+        ListNode *x新头节点 = nullptr, *d当前节点 = head;
+        while (d当前节点 != nullptr) {
+            ListNode *l临时节点 = d当前节点->next;
+            d当前节点->next = x新头节点;
+            x新头节点 = d当前节点;
+            d当前节点 = l临时节点;
+        }
+        return x新头节点;
+    }
+
+    // 递归法没有完整想出来
+    ListNode* d递归法(ListNode *head) {
+        if (head == nullptr || head->next == nullptr) return head;
+        ListNode *x新头节点 = d递归法(head->next);
+        head->next->next = head;
+        head->next = nullptr;
+        return x新头节点;
+    }
 };

@@ -22,5 +22,19 @@ public:
         return j结果;
     }
 
-
+    //第三次做
+    vector<int> l两数之和(vector<int>& nums, int target) {
+        vector<int> j结果;
+        unordered_map<int, int> p匹配表;
+        int c长度 = nums.size();
+        for (int i = 0; i < c长度; ++i) {
+            if (p匹配表.find(target - nums[i]) != p匹配表.end()) {
+                j结果.push_back(i);
+                j结果.push_back(p匹配表[target - nums[i]]);
+                break;
+            }
+            p匹配表[nums[i]] = i;
+        }
+        return j结果;
+    }
 };
