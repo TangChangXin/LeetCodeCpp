@@ -17,6 +17,7 @@ public:
                 --z指针2;
             }
         }
+
         if (z指针1 == -1)
             while (z指针2 >= 0)
                 nums1[z指针3--] = nums2[z指针2--];
