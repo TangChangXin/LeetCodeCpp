@@ -3,7 +3,7 @@
 //
 #include <vector>
 using namespace std;
-class Solution {
+class Solution88 {
 public:
     //没完全做出来
     void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
