@@ -3,7 +3,7 @@
 //
 
 #include "Linkedlist_lc2.cpp"
-class Solution {
+class Solution141 {
 public:
     bool hasCycle(ListNode *head) {
         //有瑕疵
