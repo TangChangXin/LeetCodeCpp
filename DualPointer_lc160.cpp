@@ -17,10 +17,6 @@ public:
         }
         return z指针A;//如果有交点那么“z指针A”或“z指针B”最终都指向交点，返回哪个都可以。若无交点，则两者都指向空。
 
-
-
-
-
         /*这种写法似乎有问题
         while (z指针A != nullptr || z指针B != nullptr){
             if (z指针A->val != z指针B->val) { //这里报警告，z指针A可能是空指针
@@ -32,5 +28,17 @@ public:
         }
         return nullptr;
          */
+    }
+
+    //2022年1月23日
+    ListNode *相交链表(ListNode *headA, ListNode *headB) {
+        ListNode *z指针1 = headA, *z指针2 = headB;
+        while (z指针1 != z指针2) {
+            if (z指针1 == nullptr) z指针1 = headB;
+            else z指针1 = z指针1->next;
+            if (z指针2 == nullptr) z指针2 = headA;
+            else z指针2 = z指针2->next;
+        }
+        return z指针1;
     }
 };
