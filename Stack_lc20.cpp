@@ -34,8 +34,3 @@ public:
         return f辅助栈.empty();//如果括号全匹配的话，那么栈是空的；不匹配的的话那么栈中全是左括号
     }
 };
-
-int main() {
-    stack<char>
-    return 0;
-}
