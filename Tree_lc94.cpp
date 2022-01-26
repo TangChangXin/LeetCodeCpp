@@ -20,28 +20,36 @@ struct TreeNode {
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-//2021 10 21 第二次 左根右 没完全写出来
-vector<int> 迭代法(TreeNode *root) {
-    vector<int> b遍历结果;
-    stack<TreeNode *> m模拟递归栈;
-    if (root == nullptr) return b遍历结果;
-    else m模拟递归栈.push(root);
-    TreeNode *d当前节点 = root;
-    while (d当前节点 != nullptr || !m模拟递归栈.empty()) {
-        while (d当前节点 != nullptr) {
-            m模拟递归栈.push(d当前节点->left);
-            d当前节点 = d当前节点->left;
-        }
-        d当前节点 = m模拟递归栈.top();
-        m模拟递归栈.pop();
-        b遍历结果.push_back(d当前节点->val);
-        d当前节点 = d当前节点->right;
-    }
-    return b遍历结果;
-}
-
 class Solution94 {
 public:
+    //2022年1月26日
+    vector<int> 迭代法(TreeNode *root) {
+        //中序遍历左根右
+        vector<int> j结果;
+        stack<TreeNode *> m模拟递归栈;
+        TreeNode *d当前节点 = root;
+        while (d当前节点 != nullptr || !m模拟递归栈.empty()) {
+            while (d当前节点 != nullptr) {
+                m模拟递归栈.push(d当前节点);
+                d当前节点 = d当前节点->left;
+            }
+            d当前节点 = m模拟递归栈.top(); //取栈顶元素
+            j结果.push_back(d当前节点->val);
+            d当前节点 = d当前节点->right;
+            m模拟递归栈.pop();
+        }
+        return j结果;
+    }
+
+    //2022年1月26日
+    void e二叉树中序遍历(TreeNode *root, vector<int> *&f返回数组) {
+        //递归法
+        if (root == nullptr) return;
+        e二叉树中序遍历(root->left, f返回数组);
+        f返回数组->push_back(root->val);
+        e二叉树中序遍历(root->right, f返回数组);
+    }
+
     //迭代法
     vector<int> inorderTraversal(TreeNode *root) {
         vector<int> j结果;
