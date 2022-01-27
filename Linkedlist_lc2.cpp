@@ -25,6 +25,28 @@ struct ListNode {
 */
 class Solution2 {
 public:
+    //2022年1月27日
+    ListNode *两数相加(ListNode *l1, ListNode *l2) {
+        ListNode *h和 = new ListNode(0, nullptr), *d当前节点 = h和;
+        int j进位 = 0, j加数1, j加数2;
+        while (l1 != nullptr || l2 != nullptr || j进位 != 0) {
+            if (l1 == nullptr) j加数1 = 0;
+            else {
+                j加数1 = l1->val;
+                l1 = l1->next;
+            }
+            if (l2 == nullptr) j加数2 = 0;
+            else {
+                j加数2 = l2->val;
+                l2 = l2->next;
+            }
+            d当前节点->next = new ListNode((j加数1 + j加数2 + j进位) % 10, nullptr);
+            j进位 = (j加数1 + j加数2 + j进位) / 10;
+            d当前节点 = d当前节点->next;
+        }
+        return h和->next;
+    }
+
     ListNode *addTwoNumbers(ListNode *l1, ListNode *l2) {
         if (l1 == nullptr && l2 == nullptr) return nullptr;
 
