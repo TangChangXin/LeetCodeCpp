@@ -9,6 +9,24 @@ using namespace std;
 
 class Solution226 {
 public:
+    //2022年1月28日
+    TreeNode* z直接递归翻转(TreeNode* root) {
+        if (root == nullptr) return nullptr;
+        TreeNode *l临时节点 = root->left;
+        root->left = z直接递归翻转(root->right);
+        root->right = z直接递归翻转(l临时节点);
+        return root;
+    }
+    //2022年1月28日
+    void d递归翻转(TreeNode *g根节点) {
+        if (g根节点 == nullptr) return;
+        TreeNode *l临时节点 = g根节点->left;
+        g根节点->left = g根节点->right;
+        g根节点->right = l临时节点;
+        d递归翻转(g根节点->left);
+        d递归翻转(g根节点->right);
+    }
+
     //第二次做
     TreeNode *迭代法(TreeNode *root) {
         //采用前序遍历的迭代法 根左右
