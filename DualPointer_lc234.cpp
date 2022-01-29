@@ -5,6 +5,18 @@
 #include"Linkedlist_lc2.cpp"
 class Solution234 {
 public:
+    //2022年1月28日
+    bool h回文链表(ListNode* head) {
+        ListNode *q前置节点 = new ListNode(0, head), *k快指针 = q前置节点, *m慢指针 = q前置节点;
+        while (k快指针 == nullptr || k快指针->next == nullptr) {
+            m慢指针 = m慢指针->next;
+            k快指针 = k快指针->next->next;
+        }
+        ListNode *d待翻转链表头节点 = m慢指针->next;
+        m慢指针->next = nullptr;
+
+    }
+
     bool isPalindrome(ListNode* head) {
         ListNode *m慢指针 = head, *k快指针 = head;
         while (k快指针 != nullptr && k快指针->next != nullptr) {
