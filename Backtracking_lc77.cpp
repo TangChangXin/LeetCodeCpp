@@ -8,6 +8,8 @@ class Solution77 {
 public:
     vector<vector<int>> j结果;
     vector<int> l路径;
+    //2022年1月29日
+
     //没有剪枝的回溯法  第一次做
     void h回溯函数(int n, int k, int q起始数字){
         if (l路径.size() == k){
