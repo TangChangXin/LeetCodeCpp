@@ -22,7 +22,7 @@ public:
             while (z左指针 < y右指针) {
                 int h和 = nums[i] + nums[z左指针] + nums[y右指针];
                 if (h和 == 0) {
-                    j结果.push_back({nums[i], nums[z左指针], nums[y右指针]});
+                    j结果.push_back(vector<int>{nums[i], nums[z左指针], nums[y右指针]});
                     while (z左指针 < y右指针 && nums[z左指针] == nums[z左指针 + 1]) ++z左指针;
                     while (z左指针 < y右指针 && nums[y右指针] == nums[y右指针 - 1]) --y右指针;
                     ++z左指针;
