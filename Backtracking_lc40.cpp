@@ -12,6 +12,25 @@ public:
     vector<vector<int>> z组合结果;
     vector<int> l路径;
 
+    //2022年2月1日，去重没写好，我写的方法超时了。
+    void h回溯函数2(vector<int> &z整数数组, int m目标数, int l临时和, int q起始位置) {
+        if (l临时和 == m目标数) {
+            z组合结果.push_back(l路径);
+            return;
+        }
+        if (l临时和 > m目标数) return;
+        for (int i = q起始位置; i < z整数数组.size() && l临时和 + z整数数组[i] <= m目标数; ++i) {
+            //从起始位置开始在同一层循环内去重可以避免出现相同的组合。
+            if (i > q起始位置 && z整数数组[i - 1] == z整数数组[i]) continue;
+            l路径.push_back(z整数数组[i]);
+            l临时和 += z整数数组[i];
+            //进入下层递归时起始位置加1，可以防止在同一个位置的元素重复使用。
+            h回溯函数2(z整数数组, m目标数, l临时和, i + 1);
+            l路径.pop_back();
+            l临时和 -= z整数数组[i];
+        }
+    }
+
     void h回溯函数(vector<int> &y源数组, int m目标和, int q起始位置, int l临时和){
         //源数组必须是升序排列的
         if (l临时和 == m目标和) {
