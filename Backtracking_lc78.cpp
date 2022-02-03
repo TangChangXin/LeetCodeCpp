@@ -15,6 +15,16 @@ public:
     vector<vector<int>> j结果;
     vector<int> l路径;
 
+    //2022年2月3日，没完全想出来。其实在每次递归的时候把路径加入到结果中就是获取到子集。
+    void h回溯函数2(vector<int> &z整数数组, int q起始位置) {
+        j结果.push_back(l路径);
+        for (int i = q起始位置; i < z整数数组.size(); ++i) {
+            l路径.push_back(z整数数组[i]);
+            h回溯函数2(z整数数组, i + 1);
+            l路径.pop_back();
+        }
+    }
+
     //第一次做
     void h回溯函数(vector<int> &nums, int z子集大小, int q起始位置, int s数组长度) {
         if (l路径.size() == z子集大小) {
