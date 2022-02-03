@@ -11,6 +11,17 @@ public:
     vector<vector<int>> j结果;
     vector<int> z子集;
 
+    //2022年2月3日
+    void h回溯函数2(vector<int> &z整数数组, int q起始位置) {
+        j结果.push_back(z子集);
+        for (int i = q起始位置; i < z整数数组.size(); ++i) {
+            if (i > q起始位置 && z整数数组[i - 1] == z整数数组[i]) continue;
+            z子集.push_back(z整数数组[i]);
+            h回溯函数2(z整数数组, i + 1);
+            z子集.pop_back();
+        }
+    }
+
     //看了随想录
     void h回溯函数(vector<int> &nums, int s数组长度, int q起始位置) {
         j结果.push_back(z子集); //注意子集问题需要取树的所有节点，组合和分割问题则只是需要取叶子节点的结果
