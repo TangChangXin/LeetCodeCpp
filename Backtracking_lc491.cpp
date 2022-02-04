@@ -14,6 +14,22 @@ public:
     vector<vector<int>> j结果;
     vector<int> d递增子序列;
 
+    //2022年2月4日，没想出来
+    void h回溯函数2(vector<int> &z整数数组, int q起始位置) {
+        if (d递增子序列.size() > 1) {
+            j结果.push_back(d递增子序列);
+        }
+
+        int y已访问[201] = {0}; //初始的全没访问过。
+        for (int i = q起始位置; i < z整数数组.size(); ++i) {
+            if (!d递增子序列.empty() && z整数数组[i] < d递增子序列.back() || y已访问[z整数数组[i] + 100] == 1) continue;
+            d递增子序列.push_back(z整数数组[i]);
+            y已访问[z整数数组[i] + 100] = 1; //记录相同元素在同一层的访问状态，循环时跳过。
+            h回溯函数2(z整数数组, i + 1);
+            d递增子序列.pop_back();
+        }
+    }
+
     void h回溯函数(vector<int> &nums, int s数组长度, int q起始位置, int z子序列长度) {
         if (d递增子序列.size() == z子序列长度) {
             j结果.push_back(d递增子序列);
@@ -77,9 +93,3 @@ public:
     }
 
 };
-
-int main() {
-    int a[3] = {0};
-    cout << a[1];
-    return 0;
-}
