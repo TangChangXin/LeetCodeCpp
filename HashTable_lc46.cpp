@@ -18,12 +18,12 @@ public:
             return;
         }
         for (int i = 0; i < w无重复数组.size(); ++i) {
-            if (y已访问[w无重复数组[i] + 10] == true) continue;
+            if (y已访问[i]) continue;
             p排列.push_back(w无重复数组[i]);
-            y已访问[w无重复数组[i] + 10] = true;
+            y已访问[i] = true;
             h回溯函数(w无重复数组, y已访问);
             p排列.pop_back();
-            y已访问[w无重复数组[i] + 10] = false;
+            y已访问[i] = false;
         }
     }
     
