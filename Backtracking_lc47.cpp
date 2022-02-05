@@ -3,14 +3,34 @@
 //
 
 #include <vector>
+#include <iostream>
 #include <algorithm>
 using namespace std;
 
 class Solution47 {
 public:
-    //第一次做。
     vector<vector<int>> j结果;
     vector<int> l路径;
+
+    //2022年2月5日
+    void h回溯函数2(vector<int> &x序列, vector<bool> &y已访问) {
+        if (l路径.size() == x序列.size()) {
+            j结果.push_back(l路径);
+            return;
+        }
+
+        for (int i = 0; i < x序列.size(); ++i) {
+            //i>0防止下标越界，中间的判断是为了在同一层循环遍历中去重，最后的已访问是为了在同一个路径中去重。
+            //和下面的基本是异曲同工
+            if (i > 0 && !y已访问[i - 1] && x序列[i - 1] == x序列[i] || y已访问[i]) continue;
+            l路径.push_back(x序列[i]);
+            y已访问[i] = true;
+            h回溯函数2(x序列, y已访问);
+            l路径.pop_back();
+            y已访问[i] = false;
+        }
+    }
+
     //后来看了随想录改进去重
     void h回溯函数(vector<int> &nums, int s数组长度, vector<bool> &y已访问位置) {
         if (l路径.size() == s数组长度) {
