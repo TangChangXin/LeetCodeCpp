@@ -3,7 +3,7 @@
 //
 
 #include <vector>
-
+#include <iostream>
 using namespace std;
 
 class Solution54 {
@@ -67,3 +67,8 @@ public:
         return j结果;
     }
 };
+
+int main() {
+    cout << "哈哈哈" << endl;
+    return 0;
+}
