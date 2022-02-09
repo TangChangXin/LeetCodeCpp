@@ -11,6 +11,42 @@ using namespace std;
 
 class Solution144 {
 public:
+    //2022年2月9日，不完整想出来
+    vector<int> d迭代法前序(TreeNode *g根节点) {
+        vector<int> j结果;
+        if (g根节点 == nullptr) return j结果;
+        stack<TreeNode *> m模拟栈;
+        m模拟栈.push(g根节点);
+        while (!m模拟栈.empty()) {
+            TreeNode *d当前节点 = m模拟栈.top();
+            j结果.push_back(d当前节点->val);
+            m模拟栈.pop();
+            if (d当前节点->right) m模拟栈.push(d当前节点->right);
+            if (d当前节点->left) m模拟栈.push(d当前节点->left);
+        }
+        return j结果;
+    }
+
+    //2022年2月9日
+    void d递归法前序(TreeNode *g根节点, vector<int> &q前序遍历结果) {
+        if (g根节点 == nullptr) return;
+        q前序遍历结果.push_back(g根节点->val);
+        if (g根节点->left != nullptr) d递归法前序(g根节点->left, q前序遍历结果);
+        if (g根节点->right != nullptr) d递归法前序(g根节点->right, q前序遍历结果);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
     //迭代法
     vector<int> preorderTraversal(TreeNode *root) {
         vector<int> j结果;
