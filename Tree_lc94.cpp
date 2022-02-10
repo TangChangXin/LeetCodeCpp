@@ -22,6 +22,56 @@ struct TreeNode {
 
 class Solution94 {
 public:
+    //2022年2月10日，有问题
+    vector<int> d迭代法中序(TreeNode *root) {
+        vector<int> j结果;
+        stack<TreeNode *> m模拟栈;
+        TreeNode *d当前节点 = root;
+        //迭代法中序遍历不需要单独对根节点判断是否为空
+        while (!m模拟栈.empty() || d当前节点 != nullptr) {
+            while (d当前节点 != nullptr) {
+                m模拟栈.push(d当前节点);
+                d当前节点 = d当前节点->left;
+            }
+            d当前节点 = m模拟栈.top();
+            j结果.push_back(d当前节点->val);
+            m模拟栈.pop();
+            if (d当前节点->right) d当前节点 = d当前节点->right;
+        }
+        return j结果;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     //2022年1月26日
     vector<int> 迭代法(TreeNode *root) {
         //中序遍历左根右
