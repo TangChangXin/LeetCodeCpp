@@ -9,6 +9,18 @@ using namespace std;
 
 class Solution101 {
 public:
+    //2022年2月12日
+    bool d对称二叉树(TreeNode *z左子节点, TreeNode *y右子节点) {
+        if (z左子节点 == nullptr && y右子节点 != nullptr) return false;
+        else if (z左子节点 != nullptr && y右子节点 == nullptr) return false;
+        else if (z左子节点 == nullptr && y右子节点 == nullptr) return true;
+        else if (z左子节点->val != y右子节点->val) return false;
+
+        bool w外侧结果 = d对称二叉树(z左子节点->left, y右子节点->right);
+        bool n内侧结果 = d对称二叉树(z左子节点->right, y右子节点->left);
+        return (w外侧结果 && n内侧结果); //只有外侧和内侧结果同时为真时，左子节点和右子节点才是对称的。
+    }
+
     //第一次做 递归法
     bool s是否镜像对称(TreeNode *z左结点, TreeNode *y右结点) {
         if (z左结点 == nullptr && y右结点 != nullptr) return false;

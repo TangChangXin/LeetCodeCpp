@@ -10,6 +10,40 @@ using namespace std;
 
 class Solution222 {
 public:
+    //2022年2月15日
+    int 位运算二分法(TreeNode* root) {
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     //第一次做 代码随想录的方法。 画图时每个点不只访问了一次，为什么他还说是logn呢？
     int countNodes(TreeNode *root) {
         if (root == nullptr) return 0;
