@@ -4,7 +4,7 @@
 
 #include "Linkedlist_lc2.cpp"
 
-class Solution {
+class Solution24 {
 public:
     //大致思路没问题，但是实现细节有小问题
     ListNode *swapPairs(ListNode *head) {
