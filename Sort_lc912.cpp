@@ -2,10 +2,11 @@
 // Created by XK on 2022/2/28.
 //
 #include <vector>
-
+#include <iostream>
 using namespace std;
 
 class Solution912 {
+public:
     //2022年3月2日
     int h划分数组2(vector<int> &nums, int z左边界, int y右边界) {
         int j基准数位置 = rand() % (y右边界 - z左边界 + 1) + z左边界;
@@ -89,10 +90,19 @@ class Solution912 {
         }
     }
 
-public:
     //快速排序，看了题解
     vector<int> sortArray(vector<int> &nums) {
         grandomized_quicksort(nums, 0, (int) nums.size() - 1);
         return nums;
     }
 };
+
+int main() {
+    vector<int> qwe = {5,2,3,1};
+    Solution912 asd;
+    asd.d递归快速排序2(qwe, 0, 3);
+    for (int n:qwe) {
+        cout << n << endl;
+    }
+    return 0;
+}
