@@ -5,7 +5,9 @@
 //困难 K个一组翻转链表
 class Solution25 {
 public:
-    //2022年3月3日
+    //todo 返回头节点和尾节点的方法
+
+    //2022年3月3日,只返回了头节点
     ListNode *d迭代反转链表(ListNode *head) {
         if (head == nullptr || head->next == nullptr) return head;
         ListNode *x新头节点 = nullptr;
