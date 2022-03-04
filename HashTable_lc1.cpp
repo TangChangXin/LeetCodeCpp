@@ -7,6 +7,22 @@
 using namespace std;
 class Solution1 {
 public:
+    //2022年3月4日
+    vector<int> twoSum2(vector<int>& nums, int target) {
+        vector<int> j结果;
+        unordered_map<int, int> w位置映射表;
+        for (int i = 0; i < nums.size(); ++i) {
+            if (w位置映射表.count(target - nums[i])) {
+                j结果.push_back(i);
+                j结果.push_back(w位置映射表[target - nums[i]]);
+                break;
+            } else {
+                w位置映射表[nums[i]] = i;
+            }
+        }
+        return j结果;
+    }
+
     vector<int> twoSum(vector<int>& nums, int target) {
         vector<int> j结果;
         unordered_map<int, int> h哈希表;
