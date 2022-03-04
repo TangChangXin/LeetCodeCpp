@@ -12,9 +12,63 @@ struct s双向链表 {
     s双向链表(int j键, int z值) : j键(j键), z值(z值), q前驱节点(nullptr), h后继节点(nullptr) {}
 };
 
-class LRUCache {
+class LRUCache2 {
 private:
     int r容量;
+    s双向链表 *x虚拟头节点, *x虚拟尾节点;
+    unordered_map<int, s双向链表 *> h缓存表;
+public:
+    //有瑕疵，删除最久未使用元素时没注意擦除哈希表中的键
+    LRUCache2(int capacity) : r容量(capacity) {
+        x虚拟头节点 = new s双向链表();
+        x虚拟尾节点 = new s双向链表();
+        x虚拟头节点->h后继节点 = x虚拟尾节点;
+        x虚拟尾节点->q前驱节点 = x虚拟头节点;
+    }
+
+    int get(int key) {
+        if (!h缓存表.count(key))
+            return -1;
+        s双向链表 *b被访问元素 = h缓存表[key];
+        s删除元素(b被访问元素);
+        t添加到头部(b被访问元素);
+        return b被访问元素->z值;
+    }
+
+    void put(int key, int value) {
+        if (h缓存表.count(key)) {
+            s双向链表 *b被访问元素 = h缓存表[key];
+            b被访问元素->z值 = value;
+            s删除元素(b被访问元素);
+            t添加到头部(b被访问元素);
+        } else {
+            s双向链表 *b被访问元素 =new s双向链表(key, value);
+            h缓存表[key] = b被访问元素;
+            t添加到头部(b被访问元素);
+            if (h缓存表.size() > r容量) {
+                s双向链表 *z最久未使用元素 = x虚拟尾节点->q前驱节点;
+                s删除元素(z最久未使用元素);
+                h缓存表.erase(z最久未使用元素->j键);
+            }
+        }
+    }
+
+    void t添加到头部(s双向链表 *y元素) {
+        x虚拟头节点->h后继节点->q前驱节点 = y元素;
+        y元素->h后继节点 = x虚拟头节点->h后继节点;
+        x虚拟头节点->h后继节点 = y元素;
+        y元素 ->q前驱节点 = x虚拟头节点;
+    }
+
+    void s删除元素(s双向链表 *y元素) {
+        y元素->q前驱节点->h后继节点 = y元素->h后继节点;
+        y元素->h后继节点->q前驱节点 = y元素->q前驱节点;
+    }
+};
+
+class LRUCache {
+private:
+    int r容量; //最大容量
     s双向链表 *x虚拟头节点, *x虚拟尾结点;
     unordered_map<int, s双向链表 *> h缓存;
 public:
