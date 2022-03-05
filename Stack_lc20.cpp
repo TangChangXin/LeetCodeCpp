@@ -10,6 +10,36 @@ using namespace std;
 
 class Solution20 {
 public:
+    //2022年3月5日
+    bool isValid(string s) {
+        //默认括号是匹配的
+        unordered_map<char, char> k括号对 = {
+                {')', '('},
+                {']', '['},
+                {'}', '{'}
+        };
+        stack<char> f符号栈;
+        //循环没想好
+        for (char k括号: s) {
+            //左括号入栈
+            if (!k括号对.count(k括号))
+                f符号栈.push(k括号);
+            //如果是右括号则判断是否匹配
+            else {
+                //若第一个就是右括号，那么
+                if (f符号栈.empty())
+                    return false;
+                char d当前括号 = f符号栈.top();
+                f符号栈.pop();
+                if (d当前括号 != k括号对[k括号])
+                    return false;
+            }
+        }
+        //全匹配的话那么栈就是空的，不匹配的话栈中只有左括号。但是上述方法不能直接返回false，比如"["，或者"{[]}["
+        return f符号栈.empty();
+    }
+
+
     //2022年1月25日。细节没想清楚
     bool 有效括号(string s) {
         if (s.size() % 2 == 1) return false;
