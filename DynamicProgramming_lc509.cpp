@@ -14,6 +14,19 @@ using namespace std;
 
 class Solution509 {
 public:
+    //2022年3月11日
+    int d动态规划(int n) {
+        if (n <= 1)
+            return n;
+        int j结果 = 0, j加数1 = 0, j加数2 = 1;
+        for (int i = 2; i <= n; ++i) {
+            j结果 = j加数1 + j加数2;
+            j加数1 = j加数2;
+            j加数2 = j结果;
+        }
+        return j结果;
+    }
+
     int fib(int n) {
         if (n < 2) return n;
         vector<int> DP表(n + 1, 0);
