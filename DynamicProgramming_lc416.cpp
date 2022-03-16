@@ -6,6 +6,7 @@
 #include <iostream>
 using namespace std;
 
+// 分割等和子集
 class Solution416 {
 public:
     bool canPartition(vector<int> &nums) {
@@ -35,6 +36,15 @@ public:
                     z总和表[i][j] = max(z总和表[i - 1][j], z总和表[i-1][j - nums[i]] + nums[i]);
             }
         }
+        /*
+        for (int i = 0; i < nums.size(); ++i) {
+            for (int j = 0; j < m目标和 + 1; ++j) {
+                cout << z总和表[i][j];
+                cout << '\t';
+            }
+            cout << '\n';
+        }
+         */
 
         if (z总和表[nums.size() - 1][m目标和] == m目标和)
             return true;
@@ -43,15 +53,6 @@ public:
 };
 
 int main() {
-    /*
-     * for (int i = 0; i < nums.size(); ++i) {
-            for (int j = 0; j < m目标和 + 1; ++j) {
-                cout << z总和表[i][j];
-                cout << '\t';
-            }
-            cout << '\n';
-        }
-     */
     //vector<int> qwe(2, 1);
     vector<int> qwe = {3,3,3,4,5};
     Solution416 asd;
