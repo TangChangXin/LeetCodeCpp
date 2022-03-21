@@ -5,6 +5,29 @@
 #include "Linkedlist_lc2.cpp"
 class Solution206 {
 public:
+    //2022年3月21日
+    ListNode* d迭代法反转链表5(ListNode* head) {
+        if (head == nullptr || head->next == nullptr)
+            return head;
+        ListNode *x新头节点 = nullptr;
+        while (head != nullptr) {
+            ListNode *l临时节点 = head->next;
+            head->next = x新头节点;
+            x新头节点 = head;
+            head = l临时节点;
+        }
+        return x新头节点;
+    }
+
+    ListNode *d递归法反转链表5(ListNode *head) {
+        if (head == nullptr || head->next == nullptr)
+            return head;
+        ListNode *x新头节点 = d递归法反转链表5(head->next);
+        head->next->next = head;
+        head->next = nullptr;
+        return x新头节点;
+    }
+
     //2022年2月25日，5分钟
     ListNode *d迭代法反转链表4(ListNode *head) {
         if (head == nullptr || head->next == nullptr) return head;
