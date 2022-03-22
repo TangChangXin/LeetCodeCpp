@@ -7,18 +7,46 @@ using namespace std;
 
 class Solution912 {
 public:
+    //2022年3月22日 没想出来,看了以前的结果
+    int h划分数组3(vector<int> &nums, int z左边界, int y右边界) {
+        int j基准数位置 = rand() % (y右边界 - z左边界 + 1) + z左边界;
+        swap(nums[j基准数位置], nums[y右边界]);
+        int z指针1 = z左边界 - 1, j基准数 = nums[y右边界];
+        for (int i = z左边界; i <= y右边界 - 1; ++i) {
+            if (nums[i] <= j基准数) {
+                ++z指针1;
+                swap(nums[i], nums[z指针1]);
+            }
+        }
+        swap(nums[z指针1 + 1], nums[y右边界]);
+        return z指针1 + 1;
+    }
+
+    void d递归快速排序3(vector<int> &nums, int z左边界, int y右边界) {
+        if (z左边界 < y右边界) {
+            int j基准数位置 = h划分数组3(nums, z左边界, y右边界);
+            d递归快速排序3(nums, z左边界, j基准数位置 - 1);
+            d递归快速排序3(nums, j基准数位置 + 1, y右边界);
+        }
+    }
+
     //2022年3月2日
     int h划分数组2(vector<int> &nums, int z左边界, int y右边界) {
+        // 首先随机选择基准数的位置
         int j基准数位置 = rand() % (y右边界 - z左边界 + 1) + z左边界;
+        // 交换基准位置和右边界的数字。交换后基准数在最后一个位置
         swap(nums[j基准数位置], nums[y右边界]);
         int j基准数 = nums[y右边界];
         int z指针1 = z左边界 - 1;
         for (int z指针2 = z左边界; z指针2 <= y右边界 - 1; ++z指针2) {
+            // 升序排列，指针2指向的数大于基准数时不交换；小于基准数时交换到数组的前面部分
             if (nums[z指针2] <= j基准数) {
                 ++z指针1;
+                // 指针1一直指向大的数，交换指针1和指针2的数
                 swap(nums[z指针1], nums[z指针2]);
             }
         }
+        // 循环结束后“z指针1 + 1”到“y右边界 - 1”范围内都是大于基准数的数字，然后交换“y右边界”和“z指针1 + 1”数即完成了划分
         swap(nums[z指针1 + 1], nums[y右边界]);
         return z指针1 + 1; //经过一趟排序后，基准数对应索引的位置
     }
