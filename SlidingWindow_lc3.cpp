@@ -22,6 +22,52 @@ using namespace std;
 //中等 无重复字符的最长子串
 class Solution3 {
 public:
+    //2022年3月22日
+    int lengthOfLongestSubstring3(string s) {
+        unordered_map<char, int> z字符位置映射表; //保存字符以及字符对应的位置
+        int z最长子串长度 = 0, q起始位置 = 0;
+        for (int i = 0; i < s.size(); ++i) {
+            char d当前字符 = s[i];
+            //如果重复了
+            if (z字符位置映射表.count(d当前字符)) {
+                q起始位置 = max(q起始位置, z字符位置映射表[d当前字符] + 1);
+                // “z字符位置映射表[d当前字符]”实际取的是旧字符的位置，这样可能导致更新后的起始位置比原起始位置还要小
+                // 注意哈希表的更新在是否重复判断之后
+                // q起始位置 = z字符位置映射表[d当前字符] + 1;
+            }
+            z字符位置映射表[d当前字符] = i;
+            z最长子串长度 = max(z最长子串长度, i - q起始位置 + 1);
+        }
+        return z最长子串长度;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     //2022年3月2日，路西法的方法，有小细节不好理解。
     int lengthOfLongestSubstring2(string s) {
         int w无重复字符的最长子串长度 = 0;
