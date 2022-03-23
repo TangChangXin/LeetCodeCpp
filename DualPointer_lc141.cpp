@@ -5,6 +5,7 @@
 #include "Linkedlist_lc2.cpp"
 class Solution141 {
 public:
+    //2022年3月23日
     bool hasCycle2(ListNode *head) {
         ListNode *m慢指针 = head, *k快指针 = head;
         while (k快指针 != nullptr && k快指针->next != nullptr) {
