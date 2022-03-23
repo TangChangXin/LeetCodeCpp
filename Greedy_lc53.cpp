@@ -8,6 +8,29 @@ using namespace std;
 
 class Solution53 {
 public:
+    //2022年3月23日，动态规划
+    int maxSubArray2(vector<int>& nums) {
+        //TODO 注意这是子序和，不是从头到某个节点的最大和。可以从序列中截取一段的，再想想递推公式
+        vector<int> z子序和表(nums.size(), 0);
+        z子序和表[0] = nums[0];
+        int z最大子序和 = nums[0]; //防止数组只有一个元素
+        for (int i = 1; i < nums.size(); ++i) {
+            //如果nums[i]比之前的子序和大，那nums[i]直接就可以当成一个子序和了；与前面的断开，从这里作为起点再次计算
+            z子序和表[i] = max(z子序和表[i - 1] + nums[i], nums[i]);
+            z最大子序和 = max(z最大子序和, z子序和表[i]);
+        }
+        return z最大子序和;
+    }
+
+    int y优化(vector<int> nums) {
+        int z最大子序和 = nums[0], d当前和 = 0;
+        for (int & num : nums) {
+            d当前和 = max(d当前和 + num, num);
+            z最大子序和 = max(z最大子序和, d当前和);
+        }
+        return z最大子序和;
+    }
+
     //动态规划优化
     int y优化动态规划(vector<int> &nums) {
         int j结果 = nums[0], s数组和 = 0;
