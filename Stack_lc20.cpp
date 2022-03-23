@@ -10,6 +10,33 @@ using namespace std;
 
 class Solution20 {
 public:
+    //2022年3月23日
+    bool isValid2(string s) {
+        int c长度 = s.size();
+        if (c长度 % 2 == 1)
+            return false;
+        stack<char> f符号栈;
+        unordered_map<char, char> k括号对 = {
+                {'}', '{'},
+                {']', '['},
+                {')', '('}
+        };
+        for (int i = 0; i < c长度; ++i) {
+            //如果是左括号那么直接入栈
+            if (!k括号对.count(s[i])) {
+                f符号栈.push(s[i]);
+            } else {
+                if (f符号栈.empty())
+                    return false; //第一个就是右括号那么直接返回
+                char d当前字符 = f符号栈.top();
+                f符号栈.pop();
+                if (k括号对[s[i]] != d当前字符)
+                    return false;
+            }
+        }
+        return f符号栈.empty();
+    }
+
     //2022年3月5日
     bool isValid(string s) {
         //默认括号是匹配的
