@@ -10,6 +10,62 @@ using namespace std;
 
 class Solution102 {
 public:
+    //2022年3月23日
+    vector<vector<int>> levelOrder2(TreeNode* root) {
+        vector<vector<int>> c层序遍历结果;
+        if (root == nullptr)
+            return c层序遍历结果;
+        queue<TreeNode *> m每层节点;
+        m每层节点.push(root);
+        while (!m每层节点.empty()) {
+            vector<int> m每层遍历结果;
+            int c层长度 = m每层节点.size();
+            for (int i = 0; i < c层长度; ++i) {
+                TreeNode *d当前节点 = m每层节点.front();
+                m每层遍历结果.push_back(d当前节点->val);
+                m每层节点.pop();
+                if (d当前节点->left)
+                    m每层节点.push(d当前节点->left);
+                if (d当前节点->right)
+                    m每层节点.push(d当前节点->right);
+            }
+            c层序遍历结果.push_back(m每层遍历结果);
+        }
+        return c层序遍历结果;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     //2022年2月10日
     vector<vector<int>> 层序遍历2(TreeNode* root) {
         vector<vector<int>> c层序遍历结果;
