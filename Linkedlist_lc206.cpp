@@ -19,7 +19,7 @@ public:
         }
         return x新头节点;
     }
-    
+
     //2022年3月21日
     ListNode* d迭代法反转链表5(ListNode* head) {
         if (head == nullptr || head->next == nullptr)
