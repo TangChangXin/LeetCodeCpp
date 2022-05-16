@@ -5,7 +5,7 @@
 #include <unordered_map>
 using namespace std;
 
-class Solution {
+class Solution46 {
 public:
     vector<vector<int>> q全排列结果;
     vector<int> p排列;
