@@ -6,7 +6,7 @@
 
 using namespace std;
 
-class Solution {
+class Solution560 {
 public:
     //2022年5月16日第一次做,看了labuladong的题解
     int subarraySum(vector<int> &nums, int k) {
