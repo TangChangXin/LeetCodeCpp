@@ -7,6 +7,26 @@ using namespace std;
 
 class Solution41 {
 public:
+    //2022年3月24日，基本没想出来
+    int firstMissingPositive2(vector<int>& nums) {
+        /*
+         * 对于一个长度为N的数组，没出现的最小未出现正整数只在[1,N+1]中。因为如果[1,N]内的数字都出现了，那么最小未出现正整数是N+1。
+         * 如果数组内全是大于N的数，那么最小未出现正整数是1。如果数组内既有负数又有大于N的数，那么最小未出现正整数在[1,N]中,可以理解为在[1,N]中
+         * 本应该出现的数被其他数代替了。综上最小未出现正整数只能在[1,N+1]中
+         */
+        for (int i = 0; i < nums.size(); ++i) {
+            //如果是负数则跳过不管，
+            while (nums[i] > 0 && nums[i] <= nums.size() && nums[i] != nums[nums[i] - 1]) {
+                swap(nums[i], nums[nums[i] - 1]);
+            }
+        }
+        for (int i = 0; i < nums.size(); ++i) {
+            if (nums[i] != i + 1)
+                return i + 1;
+        }
+        return nums.size() + 1;
+    }
+
     //2022年3月6日
     int firstMissingPositive(vector<int> &nums) {
         int s数组长度 = nums.size();
