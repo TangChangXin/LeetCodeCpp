@@ -11,6 +11,6 @@ public:
     //2022年5月16日第一次做,看了labuladong的题解
     int subarraySum(vector<int> &nums, int k) {
         unordered_map<int, int> 前缀和表; //定义一个哈希表保存每个前缀和结果出现的次数
-
+        前缀和表.emplace(0, 1); //初始前缀和为0，出现了1次
     }
 };
