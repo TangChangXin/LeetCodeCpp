@@ -4,7 +4,7 @@
 #include <vector>
 using namespace std;
 
-class Solution {
+class Solution1109 {
 public:
     //其实开始思路没问题，但还是看了官方题解才完善
     vector<int> corpFlightBookings(vector<vector<int>>& bookings, int n) {
