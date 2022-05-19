@@ -5,7 +5,7 @@
 
 using namespace std;
 
-class Solution {
+class Solution1094 {
 public:
     //https://leetcode.cn/problems/car-pooling/solution/1094-cji-hu-shuang-bai-de-chai-fen-shu-z-kpwd/
     bool carPooling(vector<vector<int>> &trips, int capacity) {
