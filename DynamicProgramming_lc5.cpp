@@ -9,14 +9,13 @@ using namespace std;
 class Solution5 {
 public:
     string longestPalindrome(string s) {
-        //现在考虑DP表
         if (s.size() < 2) return s; //空字符串或者只有一个字符直接返回即可
         int z字符串长度 = s.size(), q起点 = 0, z子串长度 = 1;
         vector<vector<int>> DP(z字符串长度, vector<int>(z字符串长度));
         //以子串的右边界为准开始递推遍历
-        for (int y右边界 = 1; y右边界 < z字符串长度; ++y右边界) {
+        for (int y右边界 = 0; y右边界 < z字符串长度; ++y右边界) {
             //子串的右边界固定，左边界不断向右移动，这样即可选择到不同的子串。
-            for (int z左边界 = 0; z左边界 < y右边界; ++z左边界) {
+            for (int z左边界 = 0; z左边界 <= y右边界; ++z左边界) {
                 //判断当前子串是否回文
                 if (s[z左边界] == s[y右边界]) {
                     //若左右边界相等且长度小于等于3那么就是回文
@@ -25,7 +24,8 @@ public:
                     else
                         //长度大于3就需要根据去掉首尾之后的子串来判断了
                         DP[z左边界][y右边界] = DP[z左边界 + 1][y右边界 - 1];
-                    if (y右边界 - z左边界 + 1 > z子串长度) {
+                    //如果当前子串是回文的才需要更新起点和子串长度
+                    if (DP[z左边界][y右边界] && y右边界 - z左边界 + 1 > z子串长度) {
                         z子串长度 = y右边界 - z左边界 + 1;//
                         q起点 = z左边界;
                     }
