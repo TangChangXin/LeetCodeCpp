@@ -4,11 +4,46 @@
 
 #include <vector>
 #include <iostream>
+
 using namespace std;
 
-// 分割等和子集
+// 416. 分割等和子集 0-1背包问题
 class Solution416 {
 public:
+    //没完全想出来
+    bool canPartition2(vector<int> &nums) {
+        if (nums.size() < 2) return false;
+        int s数组和 = 0, m目标和;
+        for (int i: nums) {
+            s数组和 += i;
+        }
+        if (s数组和 % 2 == 1) return false; //数组总和为奇数那么必然不能分成两个和相等的子集。
+        else m目标和 = s数组和 / 2;
+        //从DP[i][j]表示任选数组索引从0到i的元素和为j
+        vector<vector<int>> DP(nums.size(), vector<int>(m目标和 + 1, 0)); //初始化全为0
+        for (int i = nums[0]; i < m目标和 + 1; ++i) {
+            DP[0][i] = nums[0];
+        }
+
+        for (int i = 1; i < nums.size(); ++i) {
+            //外层遍历数组元素，内层遍历元素和对应的值
+            for (int j = 1; j <= m目标和; ++j) {
+                int b不选择 = DP[i - 1][j];
+                int x选择;
+                if (j < nums[i])
+                    x选择 = DP[i - 1][j];
+                else
+                    x选择 = DP[i - 1][j - nums[i]] + nums[i];
+                DP[i][j] = max(b不选择, x选择);
+            }
+        }
+        if (DP[nums.size()-1][m目标和] == m目标和)
+            return true;
+        else
+            return false;
+    }
+
+
     bool canPartition(vector<int> &nums) {
         if (nums.size() < 2) return false; //小于2无法划分
         int z总和 = 0, m目标和;
@@ -33,7 +68,7 @@ public:
                 if (j < nums[i])
                     z总和表[i][j] = z总和表[i - 1][j];
                 else
-                    z总和表[i][j] = max(z总和表[i - 1][j], z总和表[i-1][j - nums[i]] + nums[i]);
+                    z总和表[i][j] = max(z总和表[i - 1][j], z总和表[i - 1][j - nums[i]] + nums[i]);
             }
         }
         /*
@@ -54,7 +89,7 @@ public:
 
 int main() {
     //vector<int> qwe(2, 1);
-    vector<int> qwe = {3,3,3,4,5};
+    vector<int> qwe = {3, 3, 3, 4, 5};
     Solution416 asd;
     cout << asd.canPartition(qwe);
     return 0;
