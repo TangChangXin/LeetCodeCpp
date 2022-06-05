@@ -10,7 +10,22 @@ using namespace std;
 // 416. 分割等和子集 0-1背包问题
 class Solution416 {
 public:
-    //没完全想出来
+    //2022年6月4日
+    bool canPartition3(vector<int> &nums) {
+        if (nums.size() < 2) return false;
+        int s数组和 = 0, m目标和;
+        for (int i: nums) {
+            s数组和 += i;
+        }
+        if (s数组和 % 2 == 1) return false; //数组总和为奇数那么必然不能分成两个和相等的子集。
+        else m目标和 = s数组和 / 2;
+        //DP[i][j]表示从0到i中选择数字，其和恰好为j。
+        vector<vector<bool>> DP(nums.size() + 1, vector<bool>(m目标和 + 1));
+
+    }
+
+
+    //2022年6月3日 没完全想出来
     bool canPartition2(vector<int> &nums) {
         if (nums.size() < 2) return false;
         int s数组和 = 0, m目标和;
@@ -19,7 +34,7 @@ public:
         }
         if (s数组和 % 2 == 1) return false; //数组总和为奇数那么必然不能分成两个和相等的子集。
         else m目标和 = s数组和 / 2;
-        //从DP[i][j]表示任选数组索引从0到i的元素和为j
+        //从DP[i][j]表示任选数组索引从0到i的元素和为j。这种方法不用更改原数组的顺序。
         vector<vector<int>> DP(nums.size(), vector<int>(m目标和 + 1, 0)); //初始化全为0
         for (int i = nums[0]; i < m目标和 + 1; ++i) {
             DP[0][i] = nums[0];
@@ -37,7 +52,7 @@ public:
                 DP[i][j] = max(b不选择, x选择);
             }
         }
-        if (DP[nums.size()-1][m目标和] == m目标和)
+        if (DP[nums.size() - 1][m目标和] == m目标和)
             return true;
         else
             return false;
