@@ -8,18 +8,20 @@ using namespace std;
 
 class Solution518 {
 public:
-/*
- * 设DP[i]表示硬币面额为i时可以凑成i的硬币组合数。其中硬币数组是给定的且假设从小到大排序的。
- * 这里究竟是DP[i-1]还是应该DP[i-coins[j]]，那么DP数组的定义是否需要改
- * DP[i] = DP[i-coins[j]] +
- */
-
-    //回溯法不行吗
+    //回溯法似乎会超时？
     int change(int amount, vector<int> &coins) {
-        int c长度 = coins.size();
-        sort(coins.begin(), coins.end()); //将硬币数组排序防止遍历目标金额时出现目标金额比硬币面值小的情况。
-        vector<int> DP(c长度 + 1);
-        DP[0] = 1; //初始化目标金额为0时的硬币组合数1。
+        //DP[i]表示凑成金额i时硬币组合数。凑不出返回0。
+        vector<int> DP(amount + 1);
+        DP[0] = 1; //任何硬币都不选就可凑成0，这也是一种方案
+        for (int i:coins) {
+            int x选中硬币 = i;
+            //容量从选中的硬币值开始遍历，不然j小于选中硬币值数组下标会出错
+            for (int j = x选中硬币; j <= amount; ++j) {
+                //这里看似是在遍历金额容量，实际可以理解为在重复选取同一个元素，不断累加直至接近目标金额。如果硬币数组从小到大排列就不会出现重复结果。
+                DP[j] += DP[j - x选中硬币];
+            }
+        }
+        return DP[amount];
     }
 };
 
