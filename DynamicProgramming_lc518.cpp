@@ -17,6 +17,7 @@ public:
             int x选中硬币 = i;
             //容量从选中的硬币值开始遍历，不然j小于选中硬币值数组下标会出错
             for (int j = x选中硬币; j <= amount; ++j) {
+                // https://leetcode.cn/problems/coin-change-2/solution/ling-qian-dui-huan-ii-by-leetcode-soluti-f7uh/1030746
                 //这里看似是在遍历金额容量，实际可以理解为在重复选取同一个元素，不断累加直至接近目标金额。如果硬币数组从小到大排列就不会出现重复结果。
                 DP[j] += DP[j - x选中硬币];
             }
