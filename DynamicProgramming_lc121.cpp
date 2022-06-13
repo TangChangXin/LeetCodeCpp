@@ -5,7 +5,7 @@
 #include <iostream>
 using namespace std;
 
-class Solution {
+class Solution121 {
 public:
     int 类似贪心(vector<int> &prices) {
         int d当前最小值 = prices[0], l利润 = 0;
