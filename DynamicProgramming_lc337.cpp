@@ -6,7 +6,7 @@
 
 using namespace std;
 
-class Solution {
+class Solution337 {
 public:
     vector<int> t偷窃树(TreeNode *root) {
         //使用长度为2的数组保存当前节点不偷与偷时得到的最大金额。
