@@ -11,6 +11,7 @@ public:
     //https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iii/solution/dong-tai-gui-hua-by-liweiwei1419-7/
     //https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iii/solution/dong-tai-gui-hua-by-liweiwei1419-7/739269
     int maxProfit(vector<int> &prices) {
+        if (prices.size() == 1) return 0;
         //DP[i][j][k]。
         //j = 0表示没有交易，j = 1表示发生了1次买入股票行为，j = 2表示发生了2次买入股票行为。
         //k = 0表示不持有股票，k = 1表示持有股票
