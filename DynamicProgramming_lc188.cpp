@@ -27,7 +27,7 @@ public:
         return DP[prices.size() - 1][k][0];
     }
 
-    //空间优化
+    //空间优化 https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iv/solution/by-flix-us00/
     int maxProfit2(int k, vector<int> &prices) {
         if (prices.size() < 2) return 0;
         //DP[i][j]。
