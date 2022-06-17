@@ -2,7 +2,7 @@
 // Created by XK on 2022/6/17.
 //
 #include <vector>
-
+#include <iostream>
 using namespace std;
 
 class Solution718 {
@@ -44,8 +44,34 @@ public:
                     DP[i][j] = DP[i - 1][j - 1] + 1;
                     z最长长度 = max(z最长长度, DP[i][j]);
                 }
+                //nums1[i-1]和nums2[j-1]不相等就是初始的0，说明以它俩为结尾的重组子数组长度为0。
+            }
+        }
+        return z最长长度;
+    }
+
+    int k空间优化(vector<int> &nums1, vector<int> &nums2) {
+        //空间优化，滚动数组思想。基于递推公式可以看出当前状态只与左上角状态有关；那么可以用一维数组，逆序遍历即可实现。如果还是正序遍历，那么左上角的值会被覆盖掉。
+        vector<int> k空间优化DP(nums2.size() + 1);
+         int z最长长度 = 0;
+        for (int i = 1; i <= nums1.size(); ++i) {
+            //i控制每一行的遍历，j控制行中每个元素的遍历。内层循环逆序遍历
+            for (int j = nums2.size(); j > 0; --j) {
+                if (nums1[i-1] == nums2[j-1]) {
+                    k空间优化DP[j] = k空间优化DP[j - 1] + 1;
+                    z最长长度 = max(z最长长度, k空间优化DP[j]);
+                } else
+                    //注意这里不相等置0，因为使用的是滚动数组，这里不置0会保留上一次相等时的结果，导致后续累加出现错误，画个DP表就理解了。
+                    k空间优化DP[j] = 0;
             }
         }
         return z最长长度;
     }
 };
+
+int main() {
+    Solution718 qwe;
+    vector<int> asd = {1,0,0,0,1}, zxc = {1,0,0,1,1};
+    qwe.k空间优化(asd, zxc);
+    return 0;
+}
