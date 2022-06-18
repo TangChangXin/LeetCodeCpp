@@ -17,7 +17,7 @@ public:
                 if (text1[i - 1] == text2[j - 1]){
                     DP[i][j] = DP[i - 1][j - 1] + 1;
                 } else
-                    //https://leetcode.cn/problems/longest-common-subsequence/solution/zui-chang-gong-gong-zi-xu-lie-by-leetcod-y7u0/
+                    //https://leetcode.cn/problems/longest-common-subsequence/solution/fu-xue-ming-zhu-er-wei-dong-tai-gui-hua-r5ez6/
                     DP[i][j] = max(DP[i][j - 1], DP[i - 1][j]);
             }
         }
