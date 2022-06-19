@@ -5,7 +5,7 @@
 #include <algorithm>
 using namespace std;
 //53. 最大子数组和
-class Solution {
+class Solution53 {
 public:
     int maxSubArray(vector<int>& nums) {
         //DP[i]表示以下标i为结尾的连续子数组的最大和
